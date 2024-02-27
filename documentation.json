@@ -1,0 +1,31 @@
+{
+  "definitions": {},
+  "info": {
+    "termsOfService": "/tos",
+    "title": "TR API documentation",
+    "version": "0.0.1"
+  },
+  "paths": {
+    "/users": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "List of all users",
+            "schema": {
+              "items": {
+                "properties": {
+                  "email": { "type": "string" },
+                  "username": { "type": "string" }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "summary": "Get the list of all users.\n\nThis function returns a list of users, excluding the password.\n\n:return: List of users."
+      }
+    }
+  },
+  "swagger": "2.0"
+}

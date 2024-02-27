@@ -1,0 +1,38 @@
+# .gitignore
+
+# Ambientes virtuais
+venv/
+
+# Arquivos de configuração locais
+.env
+
+# Byte-compiled / arquivos compilados
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs
+*.log
+
+# Arquivos gerados pelo sistema
+.DS_Store
+Thumbs.db
+# .gitignore
+
+# Ambientes virtuais
+venv/
+
+# Arquivos de configuração locais
+.env
+
+# Byte-compiled / arquivos compilados
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs
+*.log
+
+# Arquivos gerados pelo sistema
+.DS_Store
+Thumbs.db
