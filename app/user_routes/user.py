@@ -145,7 +145,7 @@ def create_user():
         return jsonify({"message": "User creation error"}), 500
     
 
-# Login
+# Defina a rota de login
 @user_routes_bp.route('/login', methods=['POST'])
 @swag_from({
     'operationId': 'login',
@@ -212,11 +212,11 @@ def login_user():
         email = data.get("email")
         password = data.get("password")
 
-        # Find the user by email
+        # Encontre o usuário pelo email
         user = mongo.db.user.find_one({"email": email})
         if user and bcrypt.check_password_hash(user["password"], password):
-            # If credentials are correct, create an authentication token
-            user_id_str = str(user["_id"])  # Convert ObjectId to string
+            # Se as credenciais estiverem corretas, crie um token de autenticação
+            user_id_str = str(user["_id"])  # Converta ObjectId para string
             token_payload = {
                 "sub": user_id_str,
                 "exp": datetime.datetime.utcnow() + datetime.timedelta(days=1)
@@ -224,10 +224,13 @@ def login_user():
 
             token = jwt.encode(token_payload, "your_secret_key_here", algorithm="HS256")
 
-            # Remove the user's password before returning
+            # Converta ObjectId para string para detalhes do usuário
+            user["_id"] = str(user["_id"])
+
+            # Remova a senha do usuário antes de retornar
             del user["password"]
 
-            # Add the user ID string to the response JSON
+            # Adicione a string de ID do usuário à resposta JSON
             user["id"] = user_id_str
 
             return jsonify({"token": token, "user": user}), 200
